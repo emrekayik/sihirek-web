@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 
+import styles from './Sihir.module.css';
+
+import Input from '../Input';
+import Result from '../Result';
+
+
 export default function Sihir() {
   const [number1, setNumber1] = useState(0);
   const [number2, setNumber2] = useState(0);
@@ -29,41 +35,37 @@ export default function Sihir() {
 
   return (
     <div className="App">
-      <h1>10 ile 100 arasında bir sayı tut</h1>
+      <h1 className={styles.title}>
+        0 ile 100 arasında bir sayı tutun ve istenen değerleri girin
+      </h1>
 
-      <div className="number-inputs">
-        <label>3'e bölümünden kalan</label>
-        <input
-          type="number"
-          placeholder="0"
-          onChange={handleNumber1Change}
-          max={2}
-          min={0}
-        />
-        <br />
-        <label>5'e bölümünden kalan</label>
-        <input
-          type="number"
-          placeholder="0"
-          onChange={handleNumber2Change}
-          max={4}
-          min={0}
-        />
-        <br />
-        <label>7'ye bölümünden kalan</label>
-        <input
-          type="number"
-          placeholder="0"
-          onChange={handleNumber3Change}
-          max={6}
-          min={0}
-        />
-        <br />
-      </div>
+      <Result result={total} />
+     
+      
 
-      <button onClick={calculateTotal}>Hesapla!</button>
+      <div className={styles.inputBox}>
+        <Input
+         onChange={handleNumber1Change}
+         max={2}
+         min={0}
+         label={"3'e bölümünden kalan"}
+         />
+         <Input
+         onChange={handleNumber2Change}
+         max={4}
+         min={0}
+         label={"5'e bölümünden kalan"}
+         />
+         <Input
+         onChange={handleNumber3Change}
+         max={6}
+         min={0}
+         label={"7'ye bölümünden kalan"}
+         />
+          <button className={styles.button} onClick={calculateTotal}>Hesapla!</button>
+         </div>
 
-      <h2>{total}</h2>
+
     </div>
   );
 }
